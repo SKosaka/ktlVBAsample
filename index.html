@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>VBA入門 ハンズオン手順</title>
+  <title>KTL Learn Advance - VBA入門 ハンズオン手順</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
@@ -22,10 +22,18 @@
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
   <google-codelab codelab-gaid=""
-                  id="vba-"
-                  title="VBA入門 ハンズオン手順"
+                  id="ktl-learn-advance-vba-"
+                  title="KTL Learn Advance - VBA入門 ハンズオン手順"
                   environment="web"
                   feedback-link="">
+    
+      <google-codelab-step label="はじめに" duration="0">
+        <p class="image-container"><img style="width: 601.70px" src="img/c8a2a0e017aa8033.jpeg"></p>
+<p>この手順はKTL Learn Advance「Excel VBA入門」にて使用するハンズオン手順です。</p>
+<p>この手順は公開しますので復習や展開し自由に使って頂いて構いません。</p>
+
+
+      </google-codelab-step>
     
       <google-codelab-step label="初期設定① - 開発タブの表示" duration="0">
         <ol type="1" start="1">
@@ -52,6 +60,10 @@
         <ol type="1" start="1">
 <li>「開発」タブを開く</li>
 <li>「Visual Basic」を選択し、VBE(Visual Basic Editor)を開く</li>
+</ol>
+<aside class="special"><p>VBEは<code>Alt</code>+<code>F11</code>でも開くことができます。<br>このハンズオンでは以降、VBEを開く動作は<code>Alt</code>+<code>F11</code>と表現します。</p>
+</aside>
+<ol type="1" start="3">
 <li>「ツール」→「オプション」を開く</li>
 <li>「編集」タブ内(最初から開かれているタブ)の「変数の宣言を強制する」にチェックを入れる</li>
 </ol>
@@ -87,7 +99,8 @@
 
 End Sub</pre>
 <aside class="warning"><p>※改行は見やすくするために入れているものです。</p>
-<p>※例えば小文字でmsgboxと入力しても、入力後にMsgBoxと自動変換されます。また、同様にスペースも必要に応じて追加されます。</p>
+<p>※VBAではコードを見やすくするために適宜<code>Tab</code>を挿入します。この場合、<code>MsgBox</code>の手前にTabをひとつ挿入します。</p>
+<p>※例えば小文字で<code>msgbox</code>と入力しても、入力後に<code>MsgBox</code>と自動変換されます。また、同様にスペースも必要に応じて追加されます。</p>
 </aside>
 <aside class="special"><p><code>MsgBox</code>は、メッセージボックスを表示する関数です。</p>
 <p>本日ご紹介するのはシンプルな書き方ですが、様々な引数を組み合わせるなどすることで多彩な表現が可能です。</p>
@@ -152,6 +165,343 @@ End Sub</pre>
 <aside class="special"><p>ここで設置した褐色のハイライト部分を「ブレイクポイント」と呼びます。</p>
 <p>プログラムを実行した際、ブレイクポイントを設定している箇所で処理を止めることができます。</p>
 <p>ステップインと同様、プログラムの内容を確認するときに用います。</p>
+<p>なお、ブレイクポイントは、設定したい行の左側(上記画像の●印付近)を押下することでも設定することができます。</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="差込印刷アプリを触ってみる" duration="0">
+        <ol type="1" start="1">
+<li>「ハンズオン用資材」のフォルダ配下は以下のとおり</li>
+</ol>
+<pre>・PDFフォルダ ... プログラム実行により作成されたPDFファイルを格納
+・差込印刷アプリ(完成版).xlsm ... ハンズオンの完成物の見本
+・差込印刷アプリ.xlsm ... ハンズオン用ファイル(プログラム部分は空)</pre>
+<ol type="1" start="2">
+<li>「差込印刷アプリ(完成版).xlsm」を開く</li>
+</ol>
+<aside class="warning"><p>「インターネット上の場所から取得されており、安全でない可能性があります」という警告文が表示された場合は「編集を有効にする」を選択してください。</p>
+<p>「セキュリティの警告...」という警告文が表示された場合は「マクロを有効にする」を選択してください。</p>
+<p>なお、セキュリティの警告が表示されるのは、VBAがコンピュータウイルスにも悪用できてしまうためです。作成元が不明のマクロを含むファイルは開かない、マクロを有効にしないことを心がけてください。</p>
+</aside>
+<ol type="1" start="3">
+<li>「納入通知書」「差し込みリスト」の2シートがある<br>今回のプログラムでは「差し込みリスト」のK列「引抜」セルが空欄の行の対象者の情報を「納入通知書」シートに転記しPDF化又は印刷する。なお、「納入通知書」シートの差込箇所にあたる部分を便宜上褐色に色付けしている</li>
+<li>「納入通知書」シート上「印刷」ボタンを選択</li>
+<li>暫く待つと「差し込み完了しました」というメッセージボックスが表示される</li>
+<li>「OK」押下後、PDFフォルダを確認すると2つのPDFファイルが出力されていることが確認できる</li>
+<li>「差込印刷アプリ(完成版).xlsm」に戻り<code>Alt</code>+<code>F11</code>キーでVBEを開くと完成版のコードとコメントを確認できる</li>
+</ol>
+<aside class="special"><p>「<code>'</code>」(シングルクォーテーション)を付けた以降の記述は全てコメントとなり、ソースコードとしては扱われません。</p>
+<p>作成意図や修正履歴などをコメントとして残しておくことで作成してから時間が経っても忘れにくくなることに加え、他者がコードを読む際の理解を助けることにも繋がります。</p>
+<p>なお、ソースコードの先頭に「<code>'</code>」を付け動作しないようにすることを「コメントアウト」と呼びます。</p>
+</aside>
+<ol type="1" start="8">
+<li>「差込印刷アプリ(完成版).xlsm」を閉じる</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="差込印刷アプリを作ってみる①" duration="0">
+        <h2 is-upgraded>タイトル行の項目名の変数化</h2>
+<ol type="1" start="1">
+<li>「差込印刷アプリ.xlsm」を開き、<code>Alt</code>+<code>F11</code>でVBEを開く</li>
+<li>VBEのプロジェクトウィンドウ上で右クリック→「挿入」→「標準モジュール」と選択</li>
+<li><code>Option Explicit</code>の下に以下のように記述する</li>
+</ol>
+<pre>Option Explicit
+
+Private Enum HEADER
+  No = 1
+  郵便番号
+  住所
+  氏名
+  発行日
+  納入対象年
+  納入対象月
+  手数料A
+  手数料B
+  納入期日
+  引抜
+End Enum</pre>
+<aside class="warning"><p>ここでは<code>End Enum</code>は自動記述されないので注意</p>
+</aside>
+<aside class="special"><p>ここでは「差し込みリスト」のヘッダー行(タイトル行)の各項目名を変数名として定義し、そこに行番号を格納しています。</p>
+<p>ここで使う<code>Enum</code>のことは「列挙型変数」と呼び、その名のとおり、列挙していくような事柄(今回ならヘッダーの各項目)を変数にする場合に用います。</p>
+<p>使い方としては、<code>Private Enum HEADER</code> 〜 <code>End Enum</code>の間に、No、郵便番号、住所...と列名を順に変数名として定義していきます。</p>
+<p>最初の変数であるNoに1を代入すると、郵便番号以下は1ずつ加えた値が格納されていきます(郵便番号=2、住所=3...)。</p>
+<p>なお、Noに明示的に値を代入しない場合は自動的に0が代入されます。</p>
+<p>今回はNoに1を代入することで、結果的に列番号相当の値が格納できたことになります。</p>
+</aside>
+<h2 is-upgraded>繰り返し処理</h2>
+<ol type="1" start="4">
+<li>次に以下のように記述する</li>
+</ol>
+<pre>Public Sub 差し込み印刷()
+
+  Dim lr As ListRow
+  For Each lr In ThisWorkbook.Worksheets(&#34;差し込みリスト&#34;).ListObjects(&#34;T_差し込みリスト&#34;).ListRows
+
+    MsgBox &#34;今は&#34; &amp; lr.Index &amp; &#34;行目を処理中&#34;
+
+  Next lr
+
+  Msgbox &#34;差し込み完了しました&#34;
+
+End Sub</pre>
+<aside class="special"><p><code>Dim lr as ListRow</code>では変数を定義しています</p>
+<p>ここでは「差し込みリスト」シートにあるテーブル(T_差し込みリスト)を一行ずつ処理していくため、処理する行の番号を変数<code>lr</code>に格納していきます。</p>
+</aside>
+<aside class="special"><p>一行ずつ処理するために繰り返しの処理を入れます。</p>
+<p>ここでは<code>For Each 〜 Next lr</code>の部分です。</p>
+<p><code>For Each</code> (変数名) <code>In xxx</code> では、<code>xxx</code> の処理結果を変数に格納し、以降の処理に渡しています。</p>
+<p><code>xxx</code> の部分が繰り返しの要素となり、全てのパターンを変数に渡し切るまで処理を繰り返します。</p>
+<p>例えば、<code>For Each rng In Range("A1:A10")</code>なら、<code>A1</code>〜<code>A10</code>のセルの値を変数<code>rng</code>に順番に格納し処理するという意味になります。</p>
+<p>上記コードの<code>ThisWorkbook.Worksheets("</code>差し込みリスト<code>").ListObjects("</code>差し込みリスト<code>").ListRows</code>は、「差し込みリスト」シートにあるテーブル(T_差し込みリスト)を指しており、同テーブルを一行ずつ処理していくという意味になります。</p>
+</aside>
+<aside class="special"><p>「差込印刷アプリ(完成版).xlsm」のコードのコメント部分にFor Each以外の繰り返し文について少し触れています。</p>
+</aside>
+<h2 is-upgraded>動作確認</h2>
+<ol type="1" start="5">
+<li>「差し込み印刷」プロシージャ内をクリックしてカーソルを置き、F5キーを押下</li>
+<li>「今は1行目を処理中」と表示される。「OK」ボタンまたはEnterキーを押下すると次は「今は2行目を処理中」と表示される。これを合計7回(nの部分が1〜7まで増えていきながら)表示された後「差し込み完了しました」と表示され処理が終了する</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="差込印刷アプリを作ってみる②" duration="0">
+        <h2 is-upgraded>条件分岐(If文)</h2>
+<ol type="1" start="1">
+<li>差し込み印刷プロシージャーのFor Each文内を以下のように書き換える</li>
+</ol>
+<pre>Public Sub 差し込み印刷()
+
+  Dim lr As ListRow
+  For Each lr In ThisWorkbook.Worksheets(&#34;差し込みリスト&#34;).ListObjects(&#34;T_差し込みリスト&#34;).ListRows
+    
+    If lr.Range(引抜).Value = &#34;&#34; Then
+       MsgBox &#34;今は&#34; &amp; lr.Index &amp; &#34;行目を処理中&#34;
+    End If
+
+  Next lr
+
+  Msgbox &#34;差し込み完了しました&#34;
+
+End Sub</pre>
+<aside class="special"><p>条件によって処理を振り分ける場合は<code>If (</code>条件<code>) Then</code>と書きます。</p>
+<p>例えば <code>If x>1 then</code>なら、「もし(変数)<code>x</code>が1より大きい場合」という条件になります。</p>
+<p>※条件に一致/不一致だった場合の処理については後述します。</p>
+</aside>
+<aside class="special"><p>ここで追加した<code>If lr.Range(</code>引抜<code>).Value = "" Then</code>についてですが、</p>
+<p>まず変数<code>lr</code>は「差し込みリスト」シートにある「T_差し込みリスト」テーブルの指定行(1〜7行目のいずれか)を指していました。</p>
+<p>その後ろの<code>.Range(</code>引抜<code>)</code>は「引抜」列を示しています。</p>
+<p>なお、アプリを作成し始めた際にタイトル行の項目名を変数化しています。</p>
+<p>よって「引抜」は変数で、ここにはその際に格納した列番号<code>11</code>が格納されています</p>
+<p>(つまり正確には<code>.Range(11)</code>)。</p>
+<p><code>.Range(</code>引抜<code>).Value=""</code> で指定行の「引抜」列に該当するセルの値が「空」である、という意味になりますので、ここでは『「差し込みリスト」シートの「T_差し込みリスト」テーブルの指定行の「引抜」列に該当するセルの値が空の場合』という意味になります。</p>
+</aside>
+<h2 is-upgraded>動作確認</h2>
+<ol type="1" start="2">
+<li>「差し込み印刷」プロシージャ内をクリックしてカーソルを置き、F5キーを押下</li>
+<li>「今は1行目を処理中」と表示される。「OK」ボタンまたはEnterキーを押下すると次は「今は2行目を処理中」と表示された後「差し込み完了しました」と表示され処理が終了する</li>
+</ol>
+<aside class="special"><p>追加したIF文により「T_差し込みリスト」テーブルの「引抜」列が空欄の行のみ処理され、その結果上述3.のような結果となりました。</p>
+</aside>
+<h2 is-upgraded>IF文補足</h2>
+<p>条件分岐の書き方は他にもあります。ここではその一例を紹介します。</p>
+<pre>‘他の条件が存在する または その条件のどれにも当てはまらない場合の書き方
+If x &gt; 1 then
+  MsgBox &#34;xは1より大きい&#34;
+Else If x &gt; 10 then
+  MsgBox &#34;xは10より大きい&#34;
+Else
+  MsgBox &#34;xは1より小さい&#34;
+End If
+
+‘Not演算子を使った書き方
+If not x &gt; 1 then ‘もしxが1より大きくない場合
+
+‘複数の条件を満たす必要がある場合の書き方
+If x &gt; 1 And y &gt; 10 then ‘もしxは1以上、yは10以上の場合
+
+‘条件が一通りのみの場合は一行でその後の処理まで書ける
+If x &gt; 1 then MsgBox &#34;xは1より大きい&#34;</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="差込印刷アプリを作ってみる③" duration="0">
+        <h2 is-upgraded>納入通知書への転記処理を追加する</h2>
+<aside class="special"><p>一連の処理は1つのプロシージャ(SubまたはFunction)へまとめると可読性(読みやすさ)や保守性(改修等のしやすさ)が上がります。</p>
+<p>注意点としては1つのプロシージャには1つの機能だけを持たせるようにするということです。</p>
+<p>例えば、ここから記述するのは「T_差し込みリスト」を1行ずつ通知書へ転記するプロシージャです。</p>
+<p>同じプロシージャに印刷などいろいろな機能を追加しないようにしましょう。</p>
+</aside>
+<ol type="1" start="1">
+<li>納入通知書への情報の転記処理を追加するため、以下の記述を差し込み印刷プロシージャの下に追記する</li>
+</ol>
+<pre>Private Function 納入通知書転記(ByRef list_row As ListRow) As Boolean
+
+   With ThisWorkbook.Worksheets(&#34;納入通知書&#34;)
+      .Range(&#34;No&#34;).Value = list_row.Range(No).Value
+      .Range(&#34;郵便番号&#34;).Value = list_row.Range(郵便番号).Value
+      .Range(&#34;住所&#34;).Value = list_row.Range(住所).Value
+      .Range(&#34;氏名1&#34;).Value = list_row.Range(氏名).Value &amp; &#34; 様&#34;
+      .Range(&#34;発行日&#34;).Value = list_row.Range(発行日).Value
+      .Range(&#34;氏名2&#34;).Value = list_row.Range(氏名).Value &amp; &#34; 様&#34;
+      .Range(&#34;手数料A&#34;).Value = list_row.Range(手数料A).Value
+      .Range(&#34;手数料B&#34;).Value = list_row.Range(手数料B).Value
+      .Range(&#34;納入期日&#34;).Value = list_row.Range(納入期日).Value
+    
+      Dim targetYear As Long
+      targetYear = list_row.Range(納入対象年).Value
+      
+      Dim targetMonth As Long
+      targetYear = list_row.Range(納入対象月).Value
+      
+      Dim script As String
+      script = &#34;令和&#34; &amp; targetYear &amp; &#34;年&#34; &amp; targetMonth &amp; &#34;月分（1日〜末日）の手数料として、同封の納入通知書により下記指定期日までに下記の金額を納入されたい。&#34;
+      .Range(&#34;頭書き&#34;).Value = script
+  End With
+
+  納入通知書転記 = True
+
+End Function</pre>
+<aside class="special"><p>今回は<code>Sub</code>でなく<code>Function</code>と記述します。</p>
+<p><code>Function</code>は関数と呼ばれ、呼び出し元に値などを返すことができます。実際に返す値(今回の場合は<code>True/False</code>)は追記したコードの末尾、納入通知書転記 <code>= True</code> の部分になります。また、冒頭の<code>As Boolean</code>は返す値などの型を定義しています。呼び出しについては後述します。</p>
+<p>また、<code>(ByRef list_row As ListRow)</code>については呼び出し元から渡された値など(引数)です。この場合、「差し込みリスト」シート内「T_差し込みリスト」テーブルの指定行の番号が入ってくる想定です。</p>
+</aside>
+<aside class="special"><p>同じ内容(今回の場合だと<code>ThisWorkbook.Worksheets("</code>納入通知書<code>")</code>)を繰り返し書くときは<code>With</code>句を使用します。</p>
+<p><code>With</code>で括った箇所は「<code>.</code>」で以て省略することができます。</p>
+<p><code>With</code>句を終了する際は<code>End With</code>と記述します。</p>
+</aside>
+<aside class="special"><p>通常、セルを指定する場合は<code>Range(A1)</code>や<code>Cells(1,1)</code>と記述します。</p>
+<p>今回は予めセルそのものの名前を変更し(以下画像参照)、<code>.Range("</code>セルの名前<code>").Value</code>と表記しています。こうすることで、セルの指定を容易にし、可読性も向上させています。</p>
+<p class="image-container"><img style="width: 587.00px" src="img/d02a13f4092621f9.png"></p>
+<p>少しややこしいですが、同じ行の後段、<code>list_row.Range(xxx).Value</code>については、<code>xxx</code>の部分が列番号を格納した変数となっています。詳しくは「差込印刷アプリを作ってみる②」の「条件分岐(If文)」を参照ください。</p>
+</aside>
+<ol type="1" start="2">
+<li>「差し込み印刷」プロシージャから「納入通知書転記」プロシージャを呼び出すため、「差し込み印刷」プロシージャの<code>If</code>文内を以下のとおり修正する</li>
+</ol>
+<pre>Public Sub 差し込み印刷()
+
+  Dim lr As ListRow
+  For Each lr In ThisWorkbook.Worksheets(&#34;差し込みリスト&#34;).ListObjects(&#34;T_差し込みリスト&#34;).ListRows
+    
+    If lr.Range(引抜).Value = &#34;&#34; Then
+       If Not 納入通知書転記(lr) Then Debug.Print lr.Range(No).Value &amp; &#34; 作成失敗しました&#34;
+    End If
+
+  Next lr
+
+  Msgbox &#34;差し込み完了しました&#34;
+
+End Sub</pre>
+<aside class="special"><p>ここでは先ほど作成した「納入通知書転記」関数を呼び出しています。</p>
+<p>関数は<code>Sub</code>プロシージャ同様<code>Call</code>で呼び出すこともできますが、ここでは関数から返却される値(<code>True/False</code>)を後続の処理に使うため、このような呼び出し方をしています。</p>
+<p>ここのIf文は一行で記述されており、<code>Then</code>の後が条件分岐後の処理になります。</p>
+<p>この場合<code>If Not</code>から始まっているため、関数から返却された値が<code>False</code>だった場合、後続の処理を実行するという内容になっています。</p>
+<p>ここではエラー発生時の検証を想定し、エラー内容をイミディエイトウィンドウ(VBE上で<code>Ctrl</code>+<code>G</code>を押下し表示)に書き出しています。</p>
+</aside>
+<h2 is-upgraded>動作確認</h2>
+<ol type="1" start="3">
+<li>今回はステップインで一行ずつ処理を確認するので、「差し込み印刷」プロシージャ内をクリックしてカーソルを置き、<code>F8</code>キーを押下</li>
+<li>先ほど追記した<code>If Not</code> 納入通知書転記<code>(lr) Then</code>の箇所にきた後、「納入通知書転記」プロシージャにハイライトが移動していることがわかる</li>
+<li>納入通知書転記 <code>= True</code>まで処理が進んだらExcelシートを確認</li>
+<li>差し込みリストの最初の人の情報がExcelシートに転記されている</li>
+<li>処理が終了するまで<code>F8</code>を繰り返し押下する(<code>F5</code>で一気に終わらせてもよい)</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="差込印刷アプリを作ってみる④" duration="0">
+        <h2 is-upgraded>出力処理を追加する</h2>
+<ol type="1" start="1">
+<li>PDF又は紙への出力処理を追加するため、「納入通知書転記」プロシージャの後に以下を追記</li>
+</ol>
+<pre>Private Function 納入通知書出力(ByVal mode As String, ByRef list_row As ListRow) As Boolean
+  
+  Select Case mode
+    Case &#34;PDF&#34;, &#34;pdf&#34;, &#34;P&#34;, &#34;p&#34;
+      Dim pdfName As String
+      pdfName = Format(list_row.Range(No).Value, &#34;00&#34;) &amp; &#34;_納入通知書_&#34; &amp; list_row.Range(氏名).Value &amp; &#34;.pdf&#34;
+      ThisWorkbook.Worksheets(&#34;納入通知書&#34;).ExportAsFixedFormat Type:=xlTypePDF, Filename:=ThisWorkbook.Path &amp; &#34;¥PDF¥&#34; &amp; pdfName
+    Case Else
+      ThisWorkbook.Worksheets(&#34;納入通知書&#34;).PrintOut preview:=True
+  End Select
+
+  納入通知書出力 = True
+
+End Function</pre>
+<aside class="special"><p>冒頭<code>(ByVal mode As String, ByRef list_row As ListRow)</code> の<code>mode</code>の部分でPDF出力か印刷かを判断するための材料(文字情報)を受け取ります。ここでは<code>"PDF", "pdf", "P", "p"</code>のいずれかが<code>mode</code>に渡されたらPDF出力、それ以外の場合は印刷という仕様にしています。</p>
+</aside>
+<aside class="special"><p>条件分岐式としてCase文を使用しています。</p>
+<p>If文よりも複数条件時の記述が少なくて済みます。</p>
+<p>記述方法としては以下のとおりです。</p>
+</aside>
+<pre>Select Case mode
+  Case 条件1, 条件2, 条件3..
+    (処理)
+  Case Else
+    (処理)
+End Select</pre>
+<aside class="special"><p>特定のシートをPDFとしてエクスポートする場合は以下のとおり記述します。</p>
+<p><code>ThisWorkbook.Worksheets("</code>出力するシート名<code>").ExportAsFixedFormat Type:=xlTypePDF, Filename:=</code> 出力先のフルパス <code>+</code> 出力ファイル名</p>
+<p>また、出力したPDFファイルを開く場合の記述方法は以下のとおりです。</p>
+<p><code>CreateObject("Wscript.shell").Run 出力先のフルパス + 出力ファイル名</code></p>
+</aside>
+<aside class="special"><p>特定のシートを印刷する場合は以下のとおり記述します。</p>
+<p><code>ThisWorkbook.Worksheets("</code>出力するシート名<code>").PrintOut preview:=True</code></p>
+<p><code>preview:=True</code>の場合は印刷プレビューを表示、<code>preview:=False</code>の場合はそのまますぐに印刷される</p>
+</aside>
+<ol type="1" start="2">
+<li>「差し込み印刷」プロシージャから「納入通知書出力」プロシージャを呼び出すため、「差し込み印刷」プロシージャのIf文内を以下のとおり修正する</li>
+</ol>
+<pre>Public Sub 差し込み印刷()
+
+  Dim lr As ListRow
+  For Each lr In ThisWorkbook.Worksheets(&#34;差し込みリスト&#34;).ListObjects(&#34;T_差し込みリスト&#34;).ListRows
+    
+    If lr.Range(引抜).Value = &#34;&#34; Then
+       If Not 納入通知書転記(lr) Then Debug.Print lr.Range(No).Value &amp; &#34; 作成失敗しました&#34;
+       If Not 納入通知書出力(&#34;pdf&#34;, lr) Then Debug.Print lr.Range(No).Value &amp; &#34; 印刷失敗しました&#34;
+    End If
+
+  Next lr
+
+  Msgbox &#34;差し込み完了しました&#34;
+
+End Sub</pre>
+<h2 is-upgraded>動作確認</h2>
+<ol type="1" start="3">
+<li>「PDF」フォルダの中身を全て削除する</li>
+<li>「差し込み印刷」プロシージャ内をクリックしてカーソルを置き、F5キーを押下</li>
+<li>「差し込み完了しました」とのメッセージボックスの表示を確認後「PDF」フォルダを確認すると、「T_差し込みリスト」上引抜になっていない対象者の納入通知書が出力されていることが確認できる</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="差込印刷アプリを作ってみる⑤" duration="0">
+        <h2 is-upgraded>ボタンからプログラムを起動できるようにする</h2>
+<ol type="1" start="1">
+<li>「納入通知書」シート上の「印刷」ボタン(というか図形)上で右クリック→「マクロの登録」を選択</li>
+</ol>
+<p class="image-container"><img style="width: 247.78px" src="img/be997082d9415182.png"></p>
+<ol type="1" start="2">
+<li>表示された画面で「差し込み印刷」を選択し、「OK」を押下</li>
+</ol>
+<p class="image-container"><img style="width: 387.00px" src="img/986afad5baef82c3.png"></p>
+<ol type="1" start="3">
+<li>「印刷」ボタンを押すことで今回作成したプログラムが起動するようになる</li>
+</ol>
+<aside class="special"><p>ここで選択できるのは<code>Sub</code>または<code>Public Sub</code>から始まる<code>Sub</code>プロシージャのみです。</p>
+<p><code>Private Sub</code>や<code>Function</code>などのプロシージャは選択できません。</p>
+<p>なお、上述作業でボタン等とプロシージャを紐付けたあと、<code>Public</code>→<code>Private</code>に書き換えることは可能です。</p>
+<p><code>Sub</code>や<code>Public Sub</code>のプロシージャは「開発」タブ→「マクロ」から呼び出すことも可能なので、想定外の方法で呼び出されることを避けたい場合などは<code>Private</code>にすることで前述の方法での呼び出しができないようにします。</p>
 </aside>
 
 
