@@ -69,6 +69,94 @@
 
       </google-codelab-step>
     
+      <google-codelab-step label="初めてのVBAプログラムを動かしてみる" duration="0">
+        <ol type="1" start="1">
+<li>コードウィンドウの<code>Option Explicit</code>の次の行に<code>sub Test</code>と入力し、<code>Enter</code>キーを押下する</li>
+<li>すると自動的に<code>sub</code>が<code>Sub</code>と変換され、<code>Test</code>の後ろに<code>()</code>が追記される。また、<code>End Sub</code>と表示される</li>
+</ol>
+<aside class="special"><p><code>Sub XX</code> から始まり、<code>End Sub</code>で終わるまとまりのことを「Subプロシージャ」といいます。</p>
+<p>「プロシージャ」はプログラムのまとまりを示すもので、Excelは呼び出されたプロシージャに書かれた命令文を順番に実行していきます。</p>
+<p>なお、プロシージャには他にも「Functionプロシージャ」というものもありますが、こちらは後述します。</p>
+</aside>
+<ol type="1" start="3">
+<li><code>Sub Test()</code>以下を次のように記述する</li>
+</ol>
+<pre>Sub Test()
+
+  MsgBox &#34;これはテストです&#34;
+
+End Sub</pre>
+<aside class="warning"><p>※改行は見やすくするために入れているものです。</p>
+<p>※例えば小文字でmsgboxと入力しても、入力後にMsgBoxと自動変換されます。また、同様にスペースも必要に応じて追加されます。</p>
+</aside>
+<aside class="special"><p><code>MsgBox</code>は、メッセージボックスを表示する関数です。</p>
+<p>本日ご紹介するのはシンプルな書き方ですが、様々な引数を組み合わせるなどすることで多彩な表現が可能です。</p>
+<p>「Excel VBA MsgBox」などと検索すると以下のようなページなど多数のTipsがヒットしますので、詳しくはご自身で検索してみてください。</p>
+<p><a href="https://www.moug.net/tech/exvba/0100033.html" target="_blank">https://www.moug.net/tech/exvba/0100033.html</a></p>
+</aside>
+<ol type="1" start="4">
+<li>作成したプログラムを実行し動作を確認するため、<code>Sub Test()</code>と<code>End Sub</code>の間のどこかをクリックしカーソルを置く</li>
+<li><code>F5</code>キーを押下する</li>
+<li>画面に「これはテストです」というメッセージボックスが表示されたことを確認し、「OK」ボタンを押下する</li>
+</ol>
+<p class="image-container"><img style="width: 192.65px" src="img/562de6205cdf882e.png"></p>
+<h2 is-upgraded>様々な動かし方を試してみる ①ステップイン</h2>
+<ol type="1" start="7">
+<li>先ほど作成したコードを以下のように書き換える</li>
+</ol>
+<pre>Sub Test()
+
+  Dim testString as String
+  testString = &#34;これはテストです。実施日時は&#34; &amp; Now() &amp; &#34;です&#34;
+  MsgBox testString
+
+End Sub</pre>
+<aside class="special"><p><code>Dim ooo as xxx</code> で「変数」を宣言します。</p>
+<p>「変数」とは、状態などによって変化する文字列や値を格納する箱のようなものです。</p>
+<p>oooの部分が変数の名前(変数名)、xxxの部分が「型」と言って、どういった内容の情報を入れるのかを定義する部分になります。</p>
+<p>変数名は基本的に任意の名前を付けることができますが、留意点として(少し雑な説明になってしまいますが)「同じプログラムの中で使っている変数名と、既に内部的に用意されている変数名は使えない」とまずは覚えておけばよいかと思います。</p>
+<p>型については、例えば「文字列」を入れる箱を用意するとそこに入れた数字は数値として扱うことはできない、などといった制約が発生したりします。</p>
+<p>今回は詳しく説明しませんが、詳しくは「VBA 変数 型」などと検索し、以下のようなページを参考にご自身でご確認ください。<br><a href="https://www.officepro.jp/excelvba/basic/index4.html" target="_blank">https://www.officepro.jp/excelvba/basic/index4.html</a></p>
+</aside>
+<ol type="1" start="8">
+<li>4と同様に、カーソルをSubプロシージャ内に置き、<code>F8</code>キーを押下する</li>
+<li><code>Sub Test()</code>が黄色くハイライトされる</li>
+</ol>
+<p class="image-container"><img style="width: 601.70px" src="img/13703507fa7ee92a.png"></p>
+<ol type="1" start="10">
+<li>再度<code>F8</code>キーを押下すると、<code>testString = ..."</code> の行にハイライトが移動する</li>
+<li>更に<code>F8</code>キーを押下すると、<code>MsgBox testString</code>の行にハイライトが移動する。このとき<code>testString</code>にカーソルを合わせると、<code>testString</code>の内容を確認することができる。</li>
+<li>もう一度F8キーを押下すると、メッセージボックスが表示される</li>
+</ol>
+<p class="image-container"><img style="width: 333.00px" src="img/2eca87a8b4f387f6.png"></p>
+<ol type="1" start="13">
+<li>メッセージボックスの「OK」を押下すると、<code>End Sub</code>の行がハイライトされている。更に<code>F8</code>キーを押下するとハイライトが消える</li>
+</ol>
+<aside class="special"><p>ここで行ったのが「ステップイン」という実行方法です。</p>
+<p>ステップインではプログラムを一行ずつ実行していきます。</p>
+<p>想定した順序で実行されているかや、どこでエラーが起こっているかが明確でなく一行ずつ確認したい場合などに使います。</p>
+<p>なお、変数の宣言部分などは飛ばして処理します。</p>
+</aside>
+<h2 is-upgraded>様々な動かし方を試してみる ②ブレイクポイント</h2>
+<ol type="1" start="14">
+<li><code>MsgBox (testString)</code>の行にカーソルを置き、<code>F9</code>を押下する</li>
+<li>すると、カーソルを置いた業が褐色にハイライトされる</li>
+</ol>
+<p class="image-container"><img style="width: 601.70px" src="img/f7f03c74489470b4.png"></p>
+<ol type="1" start="16">
+<li><code>F5</code>キーを押下する</li>
+<li>褐色にハイライトされた行が黄色くハイライトされる</li>
+<li>もう一度<code>F5</code>キーを押下するとメッセージボックスが表示される</li>
+<li>メッセージボックスの「OK」を押下すると、黄色いハイライトは消える</li>
+</ol>
+<aside class="special"><p>ここで設置した褐色のハイライト部分を「ブレイクポイント」と呼びます。</p>
+<p>プログラムを実行した際、ブレイクポイントを設定している箇所で処理を止めることができます。</p>
+<p>ステップインと同様、プログラムの内容を確認するときに用います。</p>
+</aside>
+
+
+      </google-codelab-step>
+    
   </google-codelab>
 
   <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
