@@ -61,7 +61,7 @@
 <li>「開発」タブを開く</li>
 <li>「Visual Basic」を選択し、VBE(Visual Basic Editor)を開く</li>
 </ol>
-<aside class="special"><p>VBEは<code>Alt</code>+<code>F11</code>でも開くことができます。<br>このハンズオンでは以降、VBEを開く動作は<code>Alt</code>+<code>F11</code>と表現します。</p>
+<aside class="special"><p>VBEは<code>Alt</code>+<code>F11</code>でも開くことができます。<br>このハンズオンでは以降、VBEを開く動作は<code>Alt</code>+<code>F11</code>と表記します。</p>
 </aside>
 <ol type="1" start="3">
 <li>「ツール」→「オプション」を開く</li>
@@ -98,9 +98,10 @@
   MsgBox &#34;これはテストです&#34;
 
 End Sub</pre>
-<aside class="warning"><p>※改行は見やすくするために入れているものです。</p>
+<aside class="warning"><p>※VBAでは一つの命令文を一行で入力します。基本的に文中での改行はできません(方法はありますがここでは触れません)。</p>
+<p>※行間の改行は自由に挿入できます。ここでも見やすくするために入れています。</p>
 <p>※VBAではコードを見やすくするために適宜<code>Tab</code>を挿入します。この場合、<code>MsgBox</code>の手前にTabをひとつ挿入します。</p>
-<p>※例えば小文字で<code>msgbox</code>と入力しても、入力後に<code>MsgBox</code>と自動変換されます。また、同様にスペースも必要に応じて追加されます。</p>
+<p>※VBAの中で予め定義されている関数等の入力は適宜補完されます。例えば小文字で<code>msgbox</code>と入力しても、入力後に<code>MsgBox</code>と自動変換されます。また、同様にスペースも必要に応じて追加されます。</p>
 </aside>
 <aside class="special"><p><code>MsgBox</code>は、メッセージボックスを表示する関数です。</p>
 <p>本日ご紹介するのはシンプルな書き方ですが、様々な引数を組み合わせるなどすることで多彩な表現が可能です。</p>
@@ -132,14 +133,14 @@ End Sub</pre>
 <p>今回は詳しく説明しませんが、詳しくは「VBA 変数 型」などと検索し、以下のようなページを参考にご自身でご確認ください。<br><a href="https://www.officepro.jp/excelvba/basic/index4.html" target="_blank">https://www.officepro.jp/excelvba/basic/index4.html</a></p>
 </aside>
 <ol type="1" start="8">
-<li>4と同様に、カーソルをSubプロシージャ内に置き、<code>F8</code>キーを押下する</li>
+<li>4と同様に、カーソルを<code>Sub</code>プロシージャ内に置き、<code>F8</code>キーを押下する</li>
 <li><code>Sub Test()</code>が黄色くハイライトされる</li>
 </ol>
 <p class="image-container"><img style="width: 601.70px" src="img/13703507fa7ee92a.png"></p>
 <ol type="1" start="10">
 <li>再度<code>F8</code>キーを押下すると、<code>testString = ..."</code> の行にハイライトが移動する</li>
 <li>更に<code>F8</code>キーを押下すると、<code>MsgBox testString</code>の行にハイライトが移動する。このとき<code>testString</code>にカーソルを合わせると、<code>testString</code>の内容を確認することができる。</li>
-<li>もう一度F8キーを押下すると、メッセージボックスが表示される</li>
+<li>もう一度<code>F8</code>キーを押下すると、メッセージボックスが表示される</li>
 </ol>
 <p class="image-container"><img style="width: 333.00px" src="img/2eca87a8b4f387f6.png"></p>
 <ol type="1" start="13">
@@ -148,11 +149,11 @@ End Sub</pre>
 <aside class="special"><p>ここで行ったのが「ステップイン」という実行方法です。</p>
 <p>ステップインではプログラムを一行ずつ実行していきます。</p>
 <p>想定した順序で実行されているかや、どこでエラーが起こっているかが明確でなく一行ずつ確認したい場合などに使います。</p>
-<p>なお、変数の宣言部分などは飛ばして処理します。</p>
+<p>なお、変数など宣言に関する部分は飛ばされます(実行はされています)。</p>
 </aside>
 <h2 is-upgraded>様々な動かし方を試してみる ②ブレイクポイント</h2>
 <ol type="1" start="14">
-<li><code>MsgBox (testString)</code>の行にカーソルを置き、<code>F9</code>を押下する</li>
+<li><code>MsgBox (testString)</code>の行にカーソルを置き、<code>F9</code>キーを押下する</li>
 <li>すると、カーソルを置いた業が褐色にハイライトされる</li>
 </ol>
 <p class="image-container"><img style="width: 601.70px" src="img/f7f03c74489470b4.png"></p>
@@ -186,7 +187,7 @@ End Sub</pre>
 <p>なお、セキュリティの警告が表示されるのは、VBAがコンピュータウイルスにも悪用できてしまうためです。作成元が不明のマクロを含むファイルは開かない、マクロを有効にしないことを心がけてください。</p>
 </aside>
 <ol type="1" start="3">
-<li>「納入通知書」「差し込みリスト」の2シートがある<br>今回のプログラムでは「差し込みリスト」のK列「引抜」セルが空欄の行の対象者の情報を「納入通知書」シートに転記しPDF化又は印刷する。なお、「納入通知書」シートの差込箇所にあたる部分を便宜上褐色に色付けしている</li>
+<li>「納入通知書」「差し込みリスト」の2シートがある<br>今回のプログラムでは「差し込みリスト」のK列「引抜」セルが空欄の行の対象者の情報を「納入通知書」シートに転記しPDF化又は印刷する。なお「納入通知書」シートの差込箇所にあたる部分は便宜上褐色に色付けしている</li>
 <li>「納入通知書」シート上「印刷」ボタンを選択</li>
 <li>暫く待つと「差し込み完了しました」というメッセージボックスが表示される</li>
 <li>「OK」押下後、PDFフォルダを確認すると2つのPDFファイルが出力されていることが確認できる</li>
@@ -206,7 +207,7 @@ End Sub</pre>
       <google-codelab-step label="差込印刷アプリを作ってみる①" duration="0">
         <h2 is-upgraded>タイトル行の項目名の変数化</h2>
 <ol type="1" start="1">
-<li>「差込印刷アプリ.xlsm」を開き、<code>Alt</code>+<code>F11</code>でVBEを開く</li>
+<li>「差込印刷アプリ.xlsm」を開き、<code>Alt</code>+<code>F11</code>キーでVBEを開く</li>
 <li>VBEのプロジェクトウィンドウ上で右クリック→「挿入」→「標準モジュール」と選択</li>
 <li><code>Option Explicit</code>の下に以下のように記述する</li>
 </ol>
@@ -225,14 +226,14 @@ Private Enum HEADER
   納入期日
   引抜
 End Enum</pre>
-<aside class="warning"><p>ここでは<code>End Enum</code>は自動記述されないので注意</p>
+<aside class="warning"><p>ここでは<code>End Enum</code>が自動記述されないので注意しましょう。</p>
 </aside>
 <aside class="special"><p>ここでは「差し込みリスト」のヘッダー行(タイトル行)の各項目名を変数名として定義し、そこに行番号を格納しています。</p>
 <p>ここで使う<code>Enum</code>のことは「列挙型変数」と呼び、その名のとおり、列挙していくような事柄(今回ならヘッダーの各項目)を変数にする場合に用います。</p>
 <p>使い方としては、<code>Private Enum HEADER</code> 〜 <code>End Enum</code>の間に、No、郵便番号、住所...と列名を順に変数名として定義していきます。</p>
-<p>最初の変数であるNoに1を代入すると、郵便番号以下は1ずつ加えた値が格納されていきます(郵便番号=2、住所=3...)。</p>
-<p>なお、Noに明示的に値を代入しない場合は自動的に0が代入されます。</p>
-<p>今回はNoに1を代入することで、結果的に列番号相当の値が格納できたことになります。</p>
+<p>最初の変数であるNoに<code>1</code>を代入すると、郵便番号以下は1ずつ加えた値が格納されていきます(郵便番号<code>=2</code>、住所<code>=3</code>...)。</p>
+<p>なお、Noに明示的に値を代入しない場合は自動的に<code>0</code>が代入されます。</p>
+<p>今回はNoに<code>1</code>を代入することで、結果的に列番号相当の値が格納できたことになります。</p>
 </aside>
 <h2 is-upgraded>繰り返し処理</h2>
 <ol type="1" start="4">
@@ -241,7 +242,7 @@ End Enum</pre>
 <pre>Public Sub 差し込み印刷()
 
   Dim lr As ListRow
-  For Each lr In ThisWorkbook.Worksheets(&#34;差し込みリスト&#34;).ListObjects(&#34;T_差し込みリスト&#34;).ListRows
+  For Each lr In 差し込みリスト.ListObjects(&#34;T_差し込みリスト&#34;).ListRows
 
     MsgBox &#34;今は&#34; &amp; lr.Index &amp; &#34;行目を処理中&#34;
 
@@ -258,9 +259,13 @@ End Sub</pre>
 <p><code>For Each</code> (変数名) <code>In xxx</code> では、<code>xxx</code> の処理結果を変数に格納し、以降の処理に渡しています。</p>
 <p><code>xxx</code> の部分が繰り返しの要素となり、全てのパターンを変数に渡し切るまで処理を繰り返します。</p>
 <p>例えば、<code>For Each rng In Range("A1:A10")</code>なら、<code>A1</code>〜<code>A10</code>のセルの値を変数<code>rng</code>に順番に格納し処理するという意味になります。</p>
-<p>上記コードの<code>ThisWorkbook.Worksheets("</code>差し込みリスト<code>").ListObjects("</code>差し込みリスト<code>").ListRows</code>は、「差し込みリスト」シートにあるテーブル(T_差し込みリスト)を指しており、同テーブルを一行ずつ処理していくという意味になります。</p>
+<p>上記コードの差し込みリスト<code>.ListObjects("</code>差し込みリスト<code>").ListRows</code>は、「差し込みリスト」シートにあるテーブル(T_差し込みリスト)を指しており、同テーブルを一行ずつ処理していくという意味になります。</p>
+<p>なお、今回は差し込みリストをテーブルとしています。</p>
+<p>テーブルにすることで一行の列範囲を指定する必要がないなど、可読性(読みやすさ)や保守性(改修等のしやすさ)が向上するというメリットがあります。</p>
+<p class="image-container"><img style="width: 587.00px" src="img/8b9ac137a3c0a6aa.png"></p>
+<p>↑テーブルにした場合の<code>ListRows</code>と<code>ListRow</code>の関係(イメージ)</p>
 </aside>
-<aside class="special"><p>「差込印刷アプリ(完成版).xlsm」のコードのコメント部分にFor Each以外の繰り返し文について少し触れています。</p>
+<aside class="special"><p>「差込印刷アプリ(完成版).xlsm」のコードのコメント部分に<code>For Each</code>以外の繰り返し文について少し触れています。</p>
 </aside>
 <h2 is-upgraded>動作確認</h2>
 <ol type="1" start="5">
@@ -274,7 +279,7 @@ End Sub</pre>
       <google-codelab-step label="差込印刷アプリを作ってみる②" duration="0">
         <h2 is-upgraded>条件分岐(If文)</h2>
 <ol type="1" start="1">
-<li>差し込み印刷プロシージャーのFor Each文内を以下のように書き換える</li>
+<li>差し込み印刷プロシージャーの<code>For Each</code>文内を以下のように書き換える</li>
 </ol>
 <pre>Public Sub 差し込み印刷()
 
@@ -304,8 +309,8 @@ End Sub</pre>
 </aside>
 <h2 is-upgraded>動作確認</h2>
 <ol type="1" start="2">
-<li>「差し込み印刷」プロシージャ内をクリックしてカーソルを置き、F5キーを押下</li>
-<li>「今は1行目を処理中」と表示される。「OK」ボタンまたはEnterキーを押下すると次は「今は2行目を処理中」と表示された後「差し込み完了しました」と表示され処理が終了する</li>
+<li>「差し込み印刷」プロシージャ内をクリックしてカーソルを置き、<code>F5</code>キーを押下</li>
+<li>「今は1行目を処理中」と表示される。「OK」ボタンまたは<code>Enter</code>キーを押下すると次は「今は2行目を処理中」と表示された後「差し込み完了しました」と表示され処理が終了する</li>
 </ol>
 <aside class="special"><p>追加したIF文により「T_差し込みリスト」テーブルの「引抜」列が空欄の行のみ処理され、その結果上述3.のような結果となりました。</p>
 </aside>
@@ -334,7 +339,7 @@ If x &gt; 1 then MsgBox &#34;xは1より大きい&#34;</pre>
     
       <google-codelab-step label="差込印刷アプリを作ってみる③" duration="0">
         <h2 is-upgraded>納入通知書への転記処理を追加する</h2>
-<aside class="special"><p>一連の処理は1つのプロシージャ(SubまたはFunction)へまとめると可読性(読みやすさ)や保守性(改修等のしやすさ)が上がります。</p>
+<aside class="special"><p>一連の処理は1つのプロシージャ(<code>Sub</code>または<code>Function</code>)へまとめると可読性や保守性が上がります。</p>
 <p>注意点としては1つのプロシージャには1つの機能だけを持たせるようにするということです。</p>
 <p>例えば、ここから記述するのは「T_差し込みリスト」を1行ずつ通知書へ転記するプロシージャです。</p>
 <p>同じプロシージャに印刷などいろいろな機能を追加しないようにしましょう。</p>
@@ -342,43 +347,31 @@ If x &gt; 1 then MsgBox &#34;xは1より大きい&#34;</pre>
 <ol type="1" start="1">
 <li>納入通知書への情報の転記処理を追加するため、以下の記述を差し込み印刷プロシージャの下に追記する</li>
 </ol>
-<pre>Private Function 納入通知書転記(ByRef list_row As ListRow) As Boolean
+<pre>Private Sub 納入通知書転記(ByRef list_row As ListRow)
+  納入通知書.Range(&#34;No&#34;).Value = list_row.Range(No).Value
+  納入通知書.Range(&#34;郵便番号&#34;).Value = list_row.Range(郵便番号).Value
+  納入通知書.Range(&#34;住所&#34;).Value = list_row.Range(住所).Value
+  納入通知書.Range(&#34;氏名1&#34;).Value = list_row.Range(氏名).Value &amp; &#34; 様&#34;
+  納入通知書.Range(&#34;発行日&#34;).Value = list_row.Range(発行日).Value
+  納入通知書.Range(&#34;氏名2&#34;).Value = list_row.Range(氏名).Value &amp; &#34; 様&#34;
+  納入通知書.Range(&#34;手数料A&#34;).Value = list_row.Range(手数料A).Value
+  納入通知書.Range(&#34;手数料B&#34;).Value = list_row.Range(手数料B).Value
+  納入通知書.Range(&#34;納入期日&#34;).Value = list_row.Range(納入期日).Value
 
-   With ThisWorkbook.Worksheets(&#34;納入通知書&#34;)
-      .Range(&#34;No&#34;).Value = list_row.Range(No).Value
-      .Range(&#34;郵便番号&#34;).Value = list_row.Range(郵便番号).Value
-      .Range(&#34;住所&#34;).Value = list_row.Range(住所).Value
-      .Range(&#34;氏名1&#34;).Value = list_row.Range(氏名).Value &amp; &#34; 様&#34;
-      .Range(&#34;発行日&#34;).Value = list_row.Range(発行日).Value
-      .Range(&#34;氏名2&#34;).Value = list_row.Range(氏名).Value &amp; &#34; 様&#34;
-      .Range(&#34;手数料A&#34;).Value = list_row.Range(手数料A).Value
-      .Range(&#34;手数料B&#34;).Value = list_row.Range(手数料B).Value
-      .Range(&#34;納入期日&#34;).Value = list_row.Range(納入期日).Value
-    
-      Dim targetYear As Long
-      targetYear = list_row.Range(納入対象年).Value
-      
-      Dim targetMonth As Long
-      targetYear = list_row.Range(納入対象月).Value
-      
-      Dim script As String
-      script = &#34;令和&#34; &amp; targetYear &amp; &#34;年&#34; &amp; targetMonth &amp; &#34;月分（1日〜末日）の手数料として、同封の納入通知書により下記指定期日までに下記の金額を納入されたい。&#34;
-      .Range(&#34;頭書き&#34;).Value = script
-  End With
+  Dim targetYear As Long
+  targetYear = list_row.Range(納入対象年).Value
+  Dim targetMonth As Long
+  targetYear = list_row.Range(納入対象月).Value
+  Dim script As String
+  script = &#34;令和&#34; &amp; targetYear &amp; &#34;年&#34; &amp; targetMonth &amp; &#34;月分（1日～末日）の手数料として、同封の納入通知書により下記指定期日までに下記
+の金額を納入されたい。&#34;
+  納入通知書.Range(&#34;頭書き&#34;).Value = script
 
-  納入通知書転記 = True
-
-End Function</pre>
-<aside class="special"><p>今回は<code>Sub</code>でなく<code>Function</code>と記述します。</p>
-<p><code>Function</code>は関数と呼ばれ、呼び出し元に値などを返すことができます。実際に返す値(今回の場合は<code>True/False</code>)は追記したコードの末尾、納入通知書転記 <code>= True</code> の部分になります。また、冒頭の<code>As Boolean</code>は返す値などの型を定義しています。呼び出しについては後述します。</p>
-<p>また、<code>(ByRef list_row As ListRow)</code>については呼び出し元から渡された値など(引数)です。この場合、「差し込みリスト」シート内「T_差し込みリスト」テーブルの指定行の番号が入ってくる想定です。</p>
-</aside>
-<aside class="special"><p>同じ内容(今回の場合だと<code>ThisWorkbook.Worksheets("</code>納入通知書<code>")</code>)を繰り返し書くときは<code>With</code>句を使用します。</p>
-<p><code>With</code>で括った箇所は「<code>.</code>」で以て省略することができます。</p>
-<p><code>With</code>句を終了する際は<code>End With</code>と記述します。</p>
+End Sub</pre>
+<aside class="special"><p>冒頭の<code>(ByRef list_row As ListRow)</code>については呼び出し元から渡された値など(引数)です。この場合、「差し込みリスト」シート内「T_差し込みリスト」テーブルの指定行の番号が入ってくる想定で、その行番号に対応する内容を「納入通知書」シートに転記します。</p>
 </aside>
 <aside class="special"><p>通常、セルを指定する場合は<code>Range(A1)</code>や<code>Cells(1,1)</code>と記述します。</p>
-<p>今回は予めセルそのものの名前を変更し(以下画像参照)、<code>.Range("</code>セルの名前<code>").Value</code>と表記しています。こうすることで、セルの指定を容易にし、可読性も向上させています。</p>
+<p>今回は予めセルそのものの名前を変更し(以下画像参照)、<code>.Range("</code>セルの名前<code>").Value</code>と表記しています。こうすることで、セルの指定を容易にし、可読性と保守性を向上させています。</p>
 <p class="image-container"><img style="width: 587.00px" src="img/d02a13f4092621f9.png"></p>
 <p>少しややこしいですが、同じ行の後段、<code>list_row.Range(xxx).Value</code>については、<code>xxx</code>の部分が列番号を格納した変数となっています。詳しくは「差込印刷アプリを作ってみる②」の「条件分岐(If文)」を参照ください。</p>
 </aside>
@@ -391,7 +384,7 @@ End Function</pre>
   For Each lr In ThisWorkbook.Worksheets(&#34;差し込みリスト&#34;).ListObjects(&#34;T_差し込みリスト&#34;).ListRows
     
     If lr.Range(引抜).Value = &#34;&#34; Then
-       If Not 納入通知書転記(lr) Then Debug.Print lr.Range(No).Value &amp; &#34; 作成失敗しました&#34;
+       Call 納入通知書転記(lr)
     End If
 
   Next lr
@@ -400,15 +393,13 @@ End Function</pre>
 
 End Sub</pre>
 <aside class="special"><p>ここでは先ほど作成した「納入通知書転記」関数を呼び出しています。</p>
-<p>関数は<code>Sub</code>プロシージャ同様<code>Call</code>で呼び出すこともできますが、ここでは関数から返却される値(<code>True/False</code>)を後続の処理に使うため、このような呼び出し方をしています。</p>
-<p>ここのIf文は一行で記述されており、<code>Then</code>の後が条件分岐後の処理になります。</p>
-<p>この場合<code>If Not</code>から始まっているため、関数から返却された値が<code>False</code>だった場合、後続の処理を実行するという内容になっています。</p>
-<p>ここではエラー発生時の検証を想定し、エラー内容をイミディエイトウィンドウ(VBE上で<code>Ctrl</code>+<code>G</code>を押下し表示)に書き出しています。</p>
+<p>呼び出す際は<code>Sub</code>プロシージャの前に<code>Callを付けて</code>呼び出します。</p>
+<p>(なくても呼び出せますが、混乱の元となるため必ずつけるようにしましょう)</p>
 </aside>
 <h2 is-upgraded>動作確認</h2>
 <ol type="1" start="3">
 <li>今回はステップインで一行ずつ処理を確認するので、「差し込み印刷」プロシージャ内をクリックしてカーソルを置き、<code>F8</code>キーを押下</li>
-<li>先ほど追記した<code>If Not</code> 納入通知書転記<code>(lr) Then</code>の箇所にきた後、「納入通知書転記」プロシージャにハイライトが移動していることがわかる</li>
+<li>先ほど追記した<code>Call</code> 納入通知書転記<code>(lr)</code>の箇所にきた後、「納入通知書転記」プロシージャにハイライトが移動していることがわかる</li>
 <li>納入通知書転記 <code>= True</code>まで処理が進んだらExcelシートを確認</li>
 <li>差し込みリストの最初の人の情報がExcelシートに転記されている</li>
 <li>処理が終了するまで<code>F8</code>を繰り返し押下する(<code>F5</code>で一気に終わらせてもよい)</li>
@@ -422,20 +413,16 @@ End Sub</pre>
 <ol type="1" start="1">
 <li>PDF又は紙への出力処理を追加するため、「納入通知書転記」プロシージャの後に以下を追記</li>
 </ol>
-<pre>Private Function 納入通知書出力(ByVal mode As String, ByRef list_row As ListRow) As Boolean
-  
+<pre>Private Sub 納入通知書出力(ByVal mode As String, ByRef list_row As ListRow)
   Select Case mode
     Case &#34;PDF&#34;, &#34;pdf&#34;, &#34;P&#34;, &#34;p&#34;
-      Dim pdfName As String
-      pdfName = Format(list_row.Range(No).Value, &#34;00&#34;) &amp; &#34;_納入通知書_&#34; &amp; list_row.Range(氏名).Value &amp; &#34;.pdf&#34;
-      ThisWorkbook.Worksheets(&#34;納入通知書&#34;).ExportAsFixedFormat Type:=xlTypePDF, Filename:=ThisWorkbook.Path &amp; &#34;¥PDF¥&#34; &amp; pdfName
-    Case Else
-      ThisWorkbook.Worksheets(&#34;納入通知書&#34;).PrintOut preview:=True
+    Dim pdfName As String
+    pdfName = Format(list_row.Range(No).Value, &#34;00&#34;) &amp; &#34;_納入通知書_&#34; &amp; list_row.Range(氏名).Value &amp; &#34;.pdf&#34;
+    納入通知書.ExportAsFixedFormat Type:=xlTypePDF, Filename:=ThisWorkbook.Path &amp; &#34;\PDF\&#34; &amp; pdfName
+  Case Else
+    納入通知書.PrintOut preview:=True
   End Select
-
-  納入通知書出力 = True
-
-End Function</pre>
+End Sub</pre>
 <aside class="special"><p>冒頭<code>(ByVal mode As String, ByRef list_row As ListRow)</code> の<code>mode</code>の部分でPDF出力か印刷かを判断するための材料(文字情報)を受け取ります。ここでは<code>"PDF", "pdf", "P", "p"</code>のいずれかが<code>mode</code>に渡されたらPDF出力、それ以外の場合は印刷という仕様にしています。</p>
 </aside>
 <aside class="special"><p>条件分岐式としてCase文を使用しています。</p>
@@ -466,8 +453,8 @@ End Select</pre>
   For Each lr In ThisWorkbook.Worksheets(&#34;差し込みリスト&#34;).ListObjects(&#34;T_差し込みリスト&#34;).ListRows
     
     If lr.Range(引抜).Value = &#34;&#34; Then
-       If Not 納入通知書転記(lr) Then Debug.Print lr.Range(No).Value &amp; &#34; 作成失敗しました&#34;
-       If Not 納入通知書出力(&#34;pdf&#34;, lr) Then Debug.Print lr.Range(No).Value &amp; &#34; 印刷失敗しました&#34;
+       Call 納入通知書転記(lr)
+       Call 納入通知書出力(&#34;pdf&#34;, lr)
     End If
 
   Next lr
@@ -478,7 +465,7 @@ End Sub</pre>
 <h2 is-upgraded>動作確認</h2>
 <ol type="1" start="3">
 <li>「PDF」フォルダの中身を全て削除する</li>
-<li>「差し込み印刷」プロシージャ内をクリックしてカーソルを置き、F5キーを押下</li>
+<li>「差し込み印刷」プロシージャ内をクリックしてカーソルを置き、<code>F5</code>キーを押下</li>
 <li>「差し込み完了しました」とのメッセージボックスの表示を確認後「PDF」フォルダを確認すると、「T_差し込みリスト」上引抜になっていない対象者の納入通知書が出力されていることが確認できる</li>
 </ol>
 
